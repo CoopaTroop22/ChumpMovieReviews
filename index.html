@@ -9,58 +9,97 @@
 <body>
     <div class="container">
         <header>
-            <h1>CHUMP Movie Reviews</h1>
+            <div class="logo-container">
+                <img src="chump-logo.gif" alt="CHUMP Logo">
+                <h1>CHUMP Movie Reviews</h1>
+            </div>
             <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+                <a href="#">Home</a>
+                <a href="#">Reviews</a>
+                <a href="#">Top 10</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <img src="images/sparkle.gif" alt="Sparkle" class="sparkle">
             </nav>
+            <div class="banner-ad">[Ad space for retro banner]</div>
         </header>
 
-        <aside class="sidebar">
-            <section class="search-bar">
-                <h2>Search</h2>
-                <input type="text" placeholder="Search reviews...">
-                <button>Go</button>
-            </section>
-            <section class="recent-reviews">
-                <h2>Recent Reviews</h2>
-                <ul>
-                    <li><a href="review-1.html">Movie Title 1</a></li>
-                    <li><a href="review-2.html">Movie Title 2</a></li>
-                    <li><a href="review-3.html">Movie Title 3</a></li>
-                </ul>
-            </section>
-            <section class="widgets">
-                <h2>Widgets</h2>
-                <p>Retro Counter: <span id="counter">123456</span></p>
-                <!-- Add more retro widgets here -->
-            </section>
-        </aside>
+        <div class="content-wrapper">
+            <aside class="sidebar">
+                <div class="widget">
+                    <h3>Popular Reviews</h3>
+                    <ul>
+                        <li><a href="#">Inception</a></li>
+                        <li><a href="#">The Dark Knight</a></li>
+                        <li><a href="#">Toy Story 3</a></li>
+                        <li><a href="#">Shutter Island</a></li>
+                    </ul>
+                </div>
+                <div class="widget">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Drama</a></li>
+                        <li><a href="#">Comedy</a></li>
+                        <li><a href="#">Sci-Fi</a></li>
+                    </ul>
+                </div>
+                <div class="widget">
+                    <h3>Flashy Widget!</h3>
+                    <p>This is an example of more clutter! Maybe some scrolling text or an animated gif would go here.</p>
+                </div>
+            </aside>
 
-        <main>
-            <section class="reviews">
-                <article class="review">
-                    <h2>Movie Title 1</h2>
-                    <img src="movie-poster-1.jpg" alt="Movie Poster 1">
-                    <p>Short description of the movie...</p>
-                    <a href="review-1.html">Read more</a>
+            <main>
+                <article class="clearfix">
+                    <h2>Fantastic Four (2005)</h2>
+                    <p><strong>Rating:</strong> 
+                        <div class="rating" data-rating="3.5"></div>
+                    </p>
+                    <img src="images/fantastic-four-poster.webp" alt="Fantastic Four Poster">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula nisl et nibh efficitur...</p>
+                    <a href="fantasticfour-review1.html" class="read-more">Read More</a>
                 </article>
-                <!-- Add more reviews as needed -->
-            </section>
-        </main>
+                         
+            </main>
+        </div>
 
         <footer>
-            <p>&copy; 2024 CHUMP Movie Reviews</p>
-            <ul>
-                <li><a href="privacy.html">Privacy Policy</a></li>
-                <li><a href="terms.html">Terms of Service</a></li>
-                <li><a href="sitemap.html">Sitemap</a></li>
-            </ul>
+            <p>&copy; 2024 CHUMP Movie Reviews. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
         </footer>
-    </div>
+    </div>    
+    
+    <script>
+        function generateStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = !Number.isInteger(rating);
+            const totalStars = 5; // Total number of stars to display
+            
+            let starsHtml = '';
+    
+            for (let i = 0; i < totalStars; i++) {
+                if (i < fullStars) {
+                    starsHtml += '<span class="star full">&#9733;</span>'; // Full star
+                } else if (i === fullStars && hasHalfStar) {
+                    starsHtml += '<span class="star half">&#9733;</span>'; // Half star
+                } else {
+                    starsHtml += '<span class="star empty">&#9733;</span>'; // Empty star
+                }
+            }
+            
+            return starsHtml;
+        }
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            const ratings = document.querySelectorAll('.rating');
+            
+            ratings.forEach(ratingElement => {
+                const ratingValue = parseFloat(ratingElement.getAttribute('data-rating'));
+                ratingElement.innerHTML = generateStars(ratingValue);
+            });
+        });
+    </script>
+    
 </body>
 </html>
-
