@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Review - CHUMP Movie Reviews</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CHUMP Movie Reviews</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <article class="detailed-review">
+                <h2 id="movie-title">Movie Title</h2>
+                <p><strong>Rating:</strong> <div class="rating" id="rating"></div></p>
+                <img src="movie-poster-1.jpg" alt="Movie Poster 1">
+                <p id="review-content">This is a detailed review of the movie...</p>
+                <a href="index.html" class="back-to-home">Back to Home</a>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 CHUMP Movie Reviews</p>
+        </footer>
+    </div>
+
+    <script>
+        function generateStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = !Number.isInteger(rating);
+            const totalStars = 5;
+
+            let starsHtml = '';
+            for (let i = 0; i < totalStars; i++) {
+                if (i < fullStars) {
+                    starsHtml += '<span class="star full">&#9733;</span>';
+                } else if (i === fullStars && hasHalfStar) {
+                    starsHtml += '<span class="star half">&#9733;</span>';
+                } else {
+                    starsHtml += '<span class="star empty">&#9733;</span>';
+                }
+            }
+            return starsHtml;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const ratingValue = 4.5; // Example rating value
+            document.getElementById('rating').innerHTML = generateStars(ratingValue);
+        });
+    </script>
+</body>
+</html>
